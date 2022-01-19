@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0259dd4794dd5ffda7ed1790cc0f5aa19e6a7a48
 INSERT INTO parties (name, description)
 VALUES
   ('JS Juggernauts', 'The JS Juggernauts eat, breathe, and sleep JavaScript. They can build everything you could ever want in JS, including a new kitchen sink.'),
