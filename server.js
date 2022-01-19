@@ -1,3 +1,4 @@
+
 const mysql = require("mysql2");
 const express = require('express');
 const inputCheck = require('./utils/inputCheck');
@@ -10,6 +11,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // Connect to database
+
 const db = mysql.createConnection({
   host: 'localhost',
   // Your MySQL username,
@@ -58,6 +60,7 @@ app.get('/api/candidate/:id', (req, res) => {
       message: 'success',
       data: row
     });
+
   });
 });
 
@@ -130,6 +133,7 @@ app.put('/api/candidate/:id', (req, res) => {
 app.delete('/api/candidate/:id', (req, res) => {
   const sql = `DELETE FROM candidates WHERE id = ?`;
   const params = [req.params.id];
+
   db.query(sql, params, (err, result) => {
     if (err) {
       res.statusMessage(400).json({ error: res.message });
@@ -154,6 +158,7 @@ app.get('/api/parties', (req, res) => {
     if (err) {
       res.status(500).json({ error: err.message });
       return;
+
     }
     res.json({
       message: 'success',
@@ -199,6 +204,7 @@ app.delete('/api/party/:id', (req, res) => {
         id: req.params.id
       });
     }
+
   });
 });
 
@@ -214,4 +220,3 @@ db.connect(err => {
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });
-});
