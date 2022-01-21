@@ -1,3 +1,8 @@
+const express = require('express');
+const router = express.Router();
+const db = require('../../db/connection');
+const inputCheck = require('../../utils/inputCheck');
+
 // Get all candidates and their party affiliation
 router.get('/candidates', (req, res) => {
     const sql = `SELECT candidates.*, parties.name 
@@ -105,7 +110,6 @@ router.get('/candidates', (req, res) => {
   // Delete a candidate
   router.delete('/candidate/:id', (req, res) => {
     const sql = `DELETE FROM candidates WHERE id = ?`;
-    const params = [req.params.id];
   
     db.query(sql, params, (err, result) => {
       if (err) {
